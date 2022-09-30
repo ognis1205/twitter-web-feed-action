@@ -1,0 +1,26 @@
+name: "Twitter Web Feed"
+author: "@ognis1205"
+description: "Generate a web feed from a Twitter account"
+runs:
+  using: node16
+  main: dist/index.js
+
+inputs:
+  file:
+    description: "The name of the JSON feed file name to be written."
+    default: "twitter.json"
+  bearer:
+    description: "Your Twitter API bearer token."
+    required: true
+  userid:
+    description: "Target user ID."
+    required: true
+  username:
+    description: "Target user name."
+    required: true
+  title:
+    description: "The title of the web feed."
+    default: "Twitter"
+  pretty:
+    description: "Remove hashtags and emoji from captions."
+    default: true
