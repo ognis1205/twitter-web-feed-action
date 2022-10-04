@@ -18,6 +18,9 @@ inputs:
   username:
     description: "Target user name."
     required: true
+  results:
+    description: "Number of tweets."
+    default: "20"
   title:
     description: "The title of the web feed."
     default: "Twitter"

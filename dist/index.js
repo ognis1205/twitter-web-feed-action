@@ -9819,6 +9819,7 @@ const action = () => __awaiter(void 0, void 0, void 0, function* () {
         const bearer = Actions.getInput("bearer");
         const userid = Actions.getInput("userid");
         const username = Actions.getInput("username");
+        const results = Actions.getInput("results");
         const title = Actions.getInput("title");
         const pretty = Actions.getInput("pretty");
         const metadata = {
@@ -9828,7 +9829,7 @@ const action = () => __awaiter(void 0, void 0, void 0, function* () {
         };
         const client = new API.TwitterApi(bearer);
         const timeline = yield client.v2.userTimeline(userid, {
-            max_results: 20,
+            max_results: Number(results),
             'tweet.fields': ['created_at'],
         });
         let items = [];

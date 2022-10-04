@@ -15,7 +15,7 @@ const clean = (value: string | undefined): string => {
 };
 
 export const feed = (tweet: Feed.Tweet, creator: string): Feed.Item => {
-  const title =  clean(tweet.text);
+  const title = clean(tweet.text);
   const link = `https://twitter.com/ognis1205/status/${tweet.id}`;
   const pubDate = new Date(tweet.created_at || "").toUTCString();
   const content = clean(tweet.text);

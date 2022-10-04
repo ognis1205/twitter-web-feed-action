@@ -23,6 +23,7 @@ const action = async (): Promise<void> => {
     const bearer = Actions.getInput("bearer");
     const userid = Actions.getInput("userid");
     const username = Actions.getInput("username");
+    const results = Actions.getInput("results");
     const title = Actions.getInput("title");
     const pretty = Actions.getInput("pretty");
 
@@ -35,7 +36,7 @@ const action = async (): Promise<void> => {
     const client = new API.TwitterApi(bearer);
 
     const timeline = await client.v2.userTimeline(userid, {
-      max_results: 20,
+      max_results: Number(results),
       'tweet.fields': ['created_at'],
     });
 
