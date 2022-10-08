@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v3
       - name: WebFeed
         id: web_feed
-        uses: ognis1205/twitter-web-feed-action@v0.1.0
+        uses: ognis1205/twitter-web-feed-action@v1.0.0
         with:
           bearer: ${{ secrets.TWITTER_BEARER_TOKEN }}
           userid: ${{ secrets.TWITTER_USERID }}
