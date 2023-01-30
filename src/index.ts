@@ -41,10 +41,10 @@ const action = async (): Promise<void> => {
       max_results: Number(results),
       'tweet.fields': ['created_at'],
     });
-    timeline = timeline.slice(0, Number(results));
+    timeline = timeline.tweets.slice(0, Number(results));
 
     let items: Feed.Item[] | [] = [];
-    for await (const tweet of timeline) {
+    for (const tweet of timeline) {
       try {
         items.push(Format.feed(tweet, username));
       } catch (e) {
