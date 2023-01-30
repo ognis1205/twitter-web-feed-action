@@ -35,15 +35,18 @@ const action = async (): Promise<void> => {
 
     const client = new API.TwitterApi(bearer);
 
-    const timeline = await client.v2.userTimeline(userid, {
+    // NOTE: As of 30/01/2023, Twitter API cannot handle "max_results" query parameter.
+    // I know this is ugly though, I cannot help to implement this way.
+    let timeline = await client.v2.userTimeline(userid, {
       max_results: Number(results),
       'tweet.fields': ['created_at'],
     });
+    timeline = timeline.slice(0, Number(results));
 
     let items: Feed.Item[] | [] = [];
     for await (const tweet of timeline) {
       try {
-        items = [...items, Format.feed(tweet, username)];
+        items.push(Format.feed(tweet, username));
       } catch (e) {
         Handlers.onWarning(e);
       }
